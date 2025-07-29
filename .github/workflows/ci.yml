@@ -8,13 +8,13 @@ on:
     branches:
       - main
 
+permissions: # ✅ TOP-LEVEL permissions à ajouter ici
+  contents: read
+  security-events: write
+
 jobs:
   build-and-scan:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      security-events: write
 
     steps:
     - name: Checkout code
@@ -63,6 +63,7 @@ jobs:
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: 'checkov-results.sarif'
+
 
 
 
