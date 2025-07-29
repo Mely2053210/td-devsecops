@@ -28,7 +28,6 @@ jobs:
     - name: Debug DockerHub tag
       run: echo "DockerHub tag = ${{ secrets.DOCKERHUB_USERNAME }}/todo-app:latest"
 
-
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
@@ -45,7 +44,7 @@ jobs:
         severity: 'HIGH,CRITICAL'
 
     - name: Upload Trivy scan results to GitHub Security
-      uses: github/codeql-action/upload-sarif@v2
+      uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: 'trivy-results.sarif'
 
@@ -57,8 +56,9 @@ jobs:
         output_file_path: checkov-results.sarif
 
     - name: Upload Checkov scan results to GitHub Security
-      uses: github/codeql-action/upload-sarif@v2
+      uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: 'checkov-results.sarif'
+
 
 
