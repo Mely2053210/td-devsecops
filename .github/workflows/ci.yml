@@ -25,6 +25,10 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    - name: Debug DockerHub tag
+      run: echo "DockerHub tag = ${{ secrets.DOCKERHUB_USERNAME }}/todo-app:latest"
+
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
